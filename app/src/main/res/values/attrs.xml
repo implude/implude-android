@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CupertinoTabLayout">
+        <attr name="layout" format="reference" />
+        <attr name="tabNum" format="integer" />
+        <attr name="selectedTheme" format="reference" />
+        <attr name="disabledTheme" format="reference" />
+    </declare-styleable>
+</resources>

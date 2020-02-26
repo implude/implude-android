@@ -4,4 +4,5 @@
     <color name="colorAccent">#0073FE</color>
     <color name="colorBlack">#000000</color>
     <color name="colorRed">#FF0000</color>
+    <color name="colorTransparent">#00000000</color>
 </resources>

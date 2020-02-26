@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/text_notice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="공지 / 신청"
+        android:textSize="15sp"
+        android:theme="@style/SelectedText" />
+
+    <TextView
+        android:id="@+id/text_community"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:text="게시글"
+        android:textSize="15sp"
+        android:theme="@style/DisabledText" />
+
+    <TextView
+        android:id="@+id/text_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:text="신청 내역"
+        android:textSize="15sp"
+        android:theme="@style/DisabledText" />
+
+</LinearLayout>
