@@ -27,14 +27,14 @@
     </style>
 
     <style name="SelectedText" parent="TextTheme">
-        <item name="fontFamily">@font/noto_black</item>
-        <item name="android:textSize">25sp</item>
+        <item name="fontFamily">@font/noto_bold</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/colorAccent</item>
     </style>
 
     <style name="DisabledText" parent="TextTheme">
         <item name="fontFamily">@font/noto_bold</item>
-        <item name="android:textSize">25sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">#BBBBBB</item>
     </style>
 

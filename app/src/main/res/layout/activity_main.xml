@@ -54,13 +54,15 @@
             app:disabledTheme="@style/DisabledText"
             app:layout="@layout/layout_tab"
             app:selectedTheme="@style/SelectedText"
-            app:tabNum="3" />
+            app:tabNum="3"
+            app:addOnTabSelectedListener="@{viewModel.viewPager}"/>
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewpager_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/layout_nav"
+            app:addOnPageChangeListener='@{viewModel.tabLayout}'
             app:setAdapter="@{viewModel.viewPagerAdapter}" />
 
     </RelativeLayout>
