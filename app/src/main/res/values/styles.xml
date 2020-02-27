@@ -4,7 +4,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorBlack</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
@@ -51,6 +51,7 @@
     <style name="ContentText" parent="TextTheme">
         <item name="fontFamily">@font/noto_medium</item>
         <item name="android:textSize">12sp</item>
+        <item name="android:lineSpacingExtra">8dp</item>
     </style>
 
 </resources>

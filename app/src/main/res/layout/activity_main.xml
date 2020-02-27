@@ -6,7 +6,6 @@
     tools:ignore="HardcodedText">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.cclean.implude.MainViewModel" />
