@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <import type="androidx.databinding.ObservableArrayList" />
         <import type="com.cclean.implude.model.BaseItemModel" />
 
         <variable
-            name="itemList"
-            type="ObservableArrayList&lt;BaseItemModel&gt;" />
+            name="viewModel"
+            type="com.cclean.implude.AnnounceViewModel" />
     </data>
 
     <LinearLayout
@@ -21,7 +22,8 @@
             android:layout_height="match_parent"
             android:background="@color/colorPrimary"
             app:layoutManager="LinearLayoutManager"
-            app:item="@{itemList}"/>
+            app:item="@{viewModel.itemList}"
+            tools:listitem="@layout/item_application"/>
 
     </LinearLayout>
 

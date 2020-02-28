@@ -1,7 +1,9 @@
 package com.cclean.implude.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import com.cclean.implude.CupertinoTabLayout
 import com.cclean.implude.R
@@ -18,6 +20,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val sharedPreferences = getSharedPreferences("firstLogin", 0)
+        if (!sharedPreferences.getBoolean("first", false)) {
+            sharedPreferences.edit().putBoolean("first", true).apply()
+        }
 
         // ViewPagerAdapter 생성
         val fragments: ArrayList<Fragment> = ArrayList()
