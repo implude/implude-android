@@ -5,12 +5,6 @@
     tools:context=".activity.MainActivity"
     tools:ignore="HardcodedText">
 
-    <data>
-        <variable
-            name="viewModel"
-            type="com.cclean.implude.MainViewModel" />
-    </data>
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -53,16 +47,16 @@
             app:disabledTheme="@style/DisabledText"
             app:layout="@layout/layout_tab"
             app:selectedTheme="@style/SelectedText"
-            app:tabNum="3"
-            app:addOnTabSelectedListener="@{viewModel.viewPager}"/>
+            app:tabNum="3"/>
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewpager_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/layout_nav"
-            app:addOnPageChangeListener='@{viewModel.tabLayout}'
-            app:setAdapter="@{viewModel.viewPagerAdapter}" />
+            android:layout_marginTop="18dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
+            android:layout_below="@id/layout_nav" />
 
     </RelativeLayout>
 

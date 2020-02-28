@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="androidx.databinding.ObservableArrayList" />
+        <import type="com.cclean.implude.model.BaseItemModel" />
+
+        <variable
+            name="itemList"
+            type="ObservableArrayList&lt;BaseItemModel&gt;" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            app:layoutManager="LinearLayoutManager"
+            app:item="@{itemList}"/>
+
+    </LinearLayout>
+
+</layout>

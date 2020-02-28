@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="isAdmin"
+            type="Boolean" />
+
+        <variable
+            name="item"
+            type="com.cclean.implude.model.ApplicationItemModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview_root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="20dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="21dp"
+                    android:layout_marginTop="21dp"
+                    android:layout_marginBottom="28dp"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:id="@+id/text_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:text="@{item.title}"
+                        android:theme="@style/TitleText"
+                        tool:text="@string/default_title"/>
+
+                    <TextView
+                        android:id="@+id/text_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:text="@{item.content}"
+                        android:theme="@style/ContentText"
+                        tool:text="@string/default_content"/>
+
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:visibility="gone"
+                        android:src="@drawable/default_image"
+                        android:scaleType="centerCrop"
+                        android:adjustViewBounds="true"
+                        android:maxHeight="360dp"
+                        app:riv_corner_radius="15dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginTop="25dp"
+                        android:text="@string/text_date"
+                        android:theme="@style/TitleText" />
+
+                    <TextView
+                        android:id="@+id/text_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:text="@{item.date}"
+                        android:theme="@style/ContentText"
+                        tool:text="@string/default_date"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginTop="25dp"
+                        android:text="@string/text_place"
+                        android:theme="@style/TitleText" />
+
+                    <TextView
+                        android:id="@+id/text_place"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:text="@{item.place}"
+                        android:theme="@style/ContentText"
+                        tool:text="@string/default_place"/>
+
+                    <Button
+                        android:layout_width="160dp"
+                        android:layout_height="36dp"
+                        android:layout_marginTop="36dp"
+                        android:background="@drawable/shape_round_accent"
+                        android:text="@string/text_application"
+                        android:textColor="@color/colorPrimary"
+                        android:theme="@style/ContentText"/>
+
+                </LinearLayout>
+
+                <ImageButton
+                    android:visibility="gone"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_margin="12dp"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_delete"
+                    android:contentDescription="deleteBtn" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</layout>

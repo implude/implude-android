@@ -6,9 +6,7 @@ import android.view.LayoutInflater
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.viewpager.widget.ViewPager
-import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.airbnb.paris.extensions.style
-import com.google.android.material.tabs.TabLayout
 import java.util.*
 
 
@@ -70,9 +68,9 @@ class CupertinoTabLayout(context: Context, private val attrs: AttributeSet?):
         }
     }
 
-    public fun addOnTabSelectedListener(viewPager: ViewPager)
+    public fun addOnTabSelectedListener(listener: ViewPagerOnTabSelectedListener)
     {
-        onTabSelectedListner = ViewPagerOnTabSelectedListener(viewPager)
+        onTabSelectedListner = listener
     }
 
     override fun onPageScrollStateChanged(state: Int) {}
