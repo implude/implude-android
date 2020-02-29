@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:toot="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="title" type="String"/>
+        <variable name="content" type="String"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:includeFontPadding="false"
+            android:text="@{title}"
+            android:textSize="14sp"
+            android:fontFamily="@font/noto_bold"
+            toot:text="@string/default_setting_title"/>
+
+        <TextView
+            android:id="@+id/text_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="#000000"
+            android:includeFontPadding="false"
+            android:text="@{content}"
+            android:textSize="12sp"
+            android:fontFamily="@font/noto_regular"
+            toot:text="@string/default_setting_content"/>
+
+    </LinearLayout>
+
+</layout>

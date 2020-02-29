@@ -26,6 +26,10 @@ class MainActivity : AppCompatActivity() {
             sharedPreferences.edit().putBoolean("first", true).apply()
         }
 
+        button_setting.setOnClickListener {
+            startActivity(Intent(this, SettingActivity::class.java))
+        }
+
         // ViewPagerAdapter 생성
         val fragments: ArrayList<Fragment> = ArrayList()
         fragments.add(AnnounceFragment())

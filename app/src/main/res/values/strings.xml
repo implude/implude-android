@@ -12,4 +12,14 @@
     <string name="text_next">다음</string>
     <string name="text_image">이미지</string>
     <string name="default_intro_title">Communication</string>
+    <string name="default_setting_content">임플루드 앱에서 로그아웃합니다</string>
+    <string name="default_setting_title">로그아웃</string>
+    <string name="text_setting">Setting</string>
+    <string name="text_back">back</string>
+    <string name="logout_content">임플루드 앱에서 로그아웃합니다</string>
+    <string name="logout_title">로그아웃</string>
+    <string name="profile_content">프로필의 여러가지 것을 변경합니다</string>
+    <string name="profile_title">프로필 설정</string>
+    <string name="info_content">애플리케이션의 버전등의 정보를 알아봅니다</string>
+    <string name="info_title">애플리케이션 정보</string>
 </resources>

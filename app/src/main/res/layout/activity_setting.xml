@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/layout_title"
+            bind:title="@{`Setting`}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/layout_setting"
+                bind:title="@{@string/logout_title}"
+                bind:content="@{@string/logout_content}"/>
+
+            <include
+                layout="@layout/layout_setting"
+                bind:title="@{@string/profile_title}"
+                bind:content="@{@string/profile_content}"/>
+
+            <include
+                layout="@layout/layout_setting"
+                bind:title="@{@string/info_title}"
+                bind:content="@{@string/info_content}"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

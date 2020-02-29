@@ -47,6 +47,7 @@ class IntroActivity : AppCompatActivity() {
 
         button_next.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
 
         val fragments: ArrayList<Fragment> = ArrayList()

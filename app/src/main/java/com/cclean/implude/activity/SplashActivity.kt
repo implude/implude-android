@@ -14,8 +14,10 @@ class SplashActivity : AppCompatActivity() {
 
         if (sharedPreferences.getBoolean("first", false)) {
             startActivity(Intent(this, MainActivity::class.java))
+            finish()
         } else {
             startActivity(Intent(this, IntroActivity::class.java))
+            finish()
         }
 
     }
