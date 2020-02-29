@@ -22,4 +22,6 @@
     <string name="profile_title">프로필 설정</string>
     <string name="info_content">애플리케이션의 버전등의 정보를 알아봅니다</string>
     <string name="info_title">애플리케이션 정보</string>
+    <string name="text_setprofile">프로필 설정</string>
+    <string name="text_pic">사진</string>
 </resources>
