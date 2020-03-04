@@ -6,7 +6,6 @@ import androidx.databinding.DataBindingUtil
 import com.google.firebase.firestore.FirebaseFirestore
 import com.implude.officialapp.R
 import com.implude.officialapp.custom.CupertinoDialog
-import com.implude.officialapp.databinding.ActivityAddMemberBinding
 import com.implude.officialapp.model.UserModel
 import kotlinx.android.synthetic.main.activity_add_member.*
 import kotlinx.android.synthetic.main.layout_title.*
@@ -16,14 +15,14 @@ class AddMemberActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding : ActivityAddMemberBinding = DataBindingUtil.setContentView<ActivityAddMemberBinding>(this, R.layout.activity_add_member)
+        setContentView(R.layout.activity_add_member)
 
         button_back.setOnClickListener {
             finish()
         }
 
         button_add.setOnClickListener {
-            val user = UserModel("", edit_name.text, edit_mail.text, false)
+            val user = UserModel("", edit_name.text, edit_mail.text, false, "")
             button_add.startAnimation();
             db.collection("users")
                 .add(user)

@@ -18,7 +18,7 @@ class ManageMemberActivity : AppCompatActivity() {
     private val adapter: ManageMemberRecyclerViewAdapter = ManageMemberRecyclerViewAdapter()
 
     init {
-        val testUser = UserModel("", "장종우", "mcpgclean@gmail.com", false)
+        val testUser = UserModel("", "장종우", "mcpgclean@gmail.com", false, "")
         itemList.add(testUser)
     }
 

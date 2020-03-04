@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
+import com.firebase.ui.auth.AuthUI
 import com.implude.officialapp.R
 import com.implude.officialapp.databinding.ActivitySettingBinding
 import kotlinx.android.synthetic.main.activity_setting.*
@@ -21,6 +22,8 @@ class SettingActivity : AppCompatActivity() {
 
         layout_logout.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
+            AuthUI.getInstance()
+                .signOut(this)
             ActivityCompat.finishAffinity(this);
         }
 
