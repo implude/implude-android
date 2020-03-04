@@ -93,7 +93,7 @@
                     android:layout_alignParentEnd="true"
                     android:visibility="gone"
                     android:src="@drawable/ic_delete"
-                    android:contentDescription="deleteBtn" />
+                    android:contentDescription="@string/text_deletebtn" />
 
             </RelativeLayout>
 

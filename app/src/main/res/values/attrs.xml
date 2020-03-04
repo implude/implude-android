@@ -6,4 +6,9 @@
         <attr name="selectedTheme" format="reference" />
         <attr name="disabledTheme" format="reference" />
     </declare-styleable>
+
+    <declare-styleable name="CupertinoEditText">
+        <attr name="title" format="string" />
+        <attr name="hint" format="string" />
+    </declare-styleable>
 </resources>

@@ -3,16 +3,13 @@ package com.cclean.implude.activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.edit
 import androidx.fragment.app.Fragment
-import com.cclean.implude.CupertinoTabLayout
+import com.cclean.implude.customview.CupertinoTabLayout
 import com.cclean.implude.R
 import com.cclean.implude.adapter.ViewPagerAdapter
 import com.cclean.implude.fragment.CommunityFragment
 import com.cclean.implude.fragment.HistoryFragment
 import com.cclean.implude.fragment.AnnounceFragment
-import com.cclean.implude.model.BaseItemModel
-import com.cclean.implude.model.NoticeItemModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

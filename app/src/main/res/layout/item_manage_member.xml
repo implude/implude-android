@@ -4,12 +4,15 @@
     xmlns:tool="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="item"
+            type="com.cclean.implude.model.UserModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:layout_marginStart="26dp"
         android:layout_marginEnd="26dp"
         android:background="@color/colorPrimary">
@@ -29,13 +32,25 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="26dp"
-            android:text=""
+            android:text="@{item.name}"
             android:textSize="13sp"
             android:theme="@style/ContentText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_profile"
             app:layout_constraintTop_toTopOf="parent"
             tool:text="@string/default_name" />
+
+        <ImageButton
+            android:id="@+id/button_delete"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="12dp"
+            android:contentDescription="@string/text_deletebtn"
+            android:src="@drawable/ic_delete"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,4 +1,4 @@
-package com.cclean.implude
+package com.cclean.implude.customview
 
 import android.content.Context
 import android.util.AttributeSet
@@ -7,6 +7,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.viewpager.widget.ViewPager
 import com.airbnb.paris.extensions.style
+import com.cclean.implude.R
 import java.util.*
 
 

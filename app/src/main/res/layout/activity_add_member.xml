@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activity.ManageMemberActivity">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                android:id="@+id/include"
+                layout="@layout/layout_title"
+                app:title="@{@string/text_add_member}" />
+
+        </LinearLayout>
+
+        <com.cclean.implude.customview.CupertinoEditText
+            android:id="@+id/edit_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            app:title="이름"
+            app:hint="제목을 입력하세요..."
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <com.cclean.implude.customview.CupertinoEditText
+            android:id="@+id/edit_mail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            app:hint="이메일을 입력하세요..."
+            app:layout_constraintTop_toBottomOf="@+id/edit_name"
+            app:title="G-MAIL"
+            tools:layout_editor_absoluteX="30dp" />
+
+        <Button
+            android:id="@+id/button_next"
+            android:layout_width="170dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="35dp"
+            android:background="@drawable/shape_round_accent"
+            android:text="@string/text_add"
+            android:textColor="@color/colorPrimary"
+            android:theme="@style/ContentText"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

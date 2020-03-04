@@ -1,8 +1,8 @@
 package com.cclean.implude.model
 
 class UserModel(
-    profile: String,
-    name: String,
-    mail: String
+    val profile: String,
+    val name: String,
+    val mail: String
 ) {
 }
