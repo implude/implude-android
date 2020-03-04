@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.implude.officialapp.customview.CupertinoTabLayout
+import com.implude.officialapp.custom.CupertinoTabLayout
 import com.implude.officialapp.R
 import com.implude.officialapp.adapter.ViewPagerAdapter
 import com.implude.officialapp.fragment.CommunityFragment

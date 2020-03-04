@@ -1,4 +1,4 @@
-package com.implude.officialapp.customview
+package com.implude.officialapp.custom
 
 import android.content.Context
 import android.text.Editable

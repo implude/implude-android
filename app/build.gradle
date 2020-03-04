@@ -48,13 +48,18 @@ dependencies {
     //firebase
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
     implementation 'com.google.firebase:firebase-analytics:17.2.3'
+    implementation 'com.google.firebase:firebase-core:17.2.3'
     implementation 'com.firebaseui:firebase-ui-auth:4.3.1'
+    implementation 'com.google.firebase:firebase-auth:19.2.0'
+    implementation 'com.google.firebase:firebase-firestore:21.4.1'
 
     //ui component
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'de.hdodenhof:circleimageview:3.0.0'
     implementation 'com.airbnb.android:paris:1.4.0'
     implementation 'com.romandanylyk:pageindicatorview:1.0.3@aar'
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+    implementation 'br.com.simplepass:loading-button-android:2.2.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

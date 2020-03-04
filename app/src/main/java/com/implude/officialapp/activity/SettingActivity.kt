@@ -3,6 +3,7 @@ package com.implude.officialapp.activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import com.implude.officialapp.R
 import com.implude.officialapp.databinding.ActivitySettingBinding
@@ -16,6 +17,11 @@ class SettingActivity : AppCompatActivity() {
 
         button_back.setOnClickListener {
             finish()
+        }
+
+        layout_logout.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+            ActivityCompat.finishAffinity(this);
         }
 
         layout_manage_member.setOnClickListener {

@@ -33,4 +33,5 @@
     <string name="text_name">이름</string>
     <string name="default_hint">제목을 입력하세요...</string>
     <string name="text_add">추가</string>
+    <string name="text_confirm">확인</string>
 </resources>

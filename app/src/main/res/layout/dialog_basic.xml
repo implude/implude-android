@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:id="@+id/layout_root"
+    android:background="#A9FFFFFF"
+    android:gravity="center">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/colorPrimary"
+        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/text_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:theme="@style/TitleText"
+                    android:textAlignment="center"
+                    tool:text="@string/default_title"/>
+
+                <TextView
+                    android:id="@+id/text_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:text="@{item.content}"
+                    android:theme="@style/ContentText"
+                    android:textAlignment="center"
+                    tool:text="@string/default_content"/>
+
+                <Button
+                    android:id="@+id/button_confirm"
+                    android:layout_width="160dp"
+                    android:layout_height="36dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/shape_round_accent"
+                    android:text="@string/text_confirm"
+                    android:textColor="@color/colorPrimary"
+                    android:theme="@style/ContentText"/>
+
+            </LinearLayout>
+
+            <ImageButton
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="12dp"
+                android:layout_alignParentEnd="true"
+                android:visibility="gone"
+                android:src="@drawable/ic_delete"
+                android:contentDescription="@string/text_deletebtn" />
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

@@ -28,7 +28,7 @@
 
         </LinearLayout>
 
-        <com.implude.officialapp.customview.CupertinoEditText
+        <com.implude.officialapp.custom.CupertinoEditText
             android:id="@+id/edit_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
             app:hint="제목을 입력하세요..."
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-        <com.implude.officialapp.customview.CupertinoEditText
+        <com.implude.officialapp.custom.CupertinoEditText
             android:id="@+id/edit_mail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,8 +51,8 @@
             app:title="G-MAIL"
             tools:layout_editor_absoluteX="30dp" />
 
-        <Button
-            android:id="@+id/button_next"
+        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+            android:id="@+id/button_add"
             android:layout_width="170dp"
             android:layout_height="40dp"
             android:layout_marginBottom="35dp"
@@ -60,6 +60,9 @@
             android:text="@string/text_add"
             android:textColor="@color/colorPrimary"
             android:theme="@style/ContentText"
+            app:spinning_bar_width="3dp"
+            app:spinning_bar_color="#FFFFFF"
+            app:spinning_bar_padding="6dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

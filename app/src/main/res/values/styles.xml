@@ -55,4 +55,10 @@
         <item name="android:lineSpacingExtra">8dp</item>
     </style>
 
+    <style name="CupertinoDialog" parent="@android:style/Theme.Translucent">
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowAnimationStyle">@style/Animation.AppCompat.Dialog</item>
+    </style>
+
 </resources>
