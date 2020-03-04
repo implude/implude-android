@@ -25,19 +25,29 @@
             android:orientation="vertical">
 
             <include
+                android:id="@+id/layout_info"
                 layout="@layout/layout_setting"
-                bind:title="@{@string/logout_title}"
-                bind:content="@{@string/logout_content}"/>
+                bind:title="@{@string/info_title}"
+                bind:content="@{@string/info_content}"/>
 
             <include
+                android:id="@+id/layout_profile"
                 layout="@layout/layout_setting"
                 bind:title="@{@string/profile_title}"
                 bind:content="@{@string/profile_content}"/>
 
             <include
+                android:id="@+id/layout_manage_member"
                 layout="@layout/layout_setting"
-                bind:title="@{@string/info_title}"
-                bind:content="@{@string/info_content}"/>
+                bind:title="@{@string/manage_member_title}"
+                bind:content="@{@string/manage_member_content}"/>
+
+            <include
+                android:id="@+id/layout_logout"
+                layout="@layout/layout_setting"
+                bind:title="@{@string/logout_title}"
+                bind:content="@{@string/logout_content}"/>
+
 
         </LinearLayout>
 
