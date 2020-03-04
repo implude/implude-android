@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.cclean.implude">
+    package="com.implude.officialapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -17,9 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,UnusedAttribute">
-        <activity android:name=".activity.ManageMemberActivity"></activity>
+        <activity android:name="com.implude.officialapp.activity.ManageMemberActivity"></activity>
         <activity
-            android:name=".activity.SplashActivity"
+            android:name="com.implude.officialapp.activity.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,12 +27,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.LoginActivity" />
-        <activity android:name=".activity.IntroActivity" />
-        <activity android:name=".activity.SettingActivity" />
-        <activity android:name=".activity.SetProfileActivity" />
-        <activity android:name=".activity.AddMemberActivity" />
+        <activity android:name="com.implude.officialapp.activity.MainActivity" />
+        <activity android:name="com.implude.officialapp.activity.LoginActivity" />
+        <activity android:name="com.implude.officialapp.activity.IntroActivity" />
+        <activity android:name="com.implude.officialapp.activity.SettingActivity" />
+        <activity android:name="com.implude.officialapp.activity.SetProfileActivity" />
+        <activity android:name="com.implude.officialapp.activity.AddMemberActivity" />
     </application>
 
 </manifest>

@@ -6,7 +6,7 @@
 
     <data>
         <import type="androidx.databinding.ObservableArrayList" />
-        <import type="com.cclean.implude.model.UserModel" />
+        <import type="com.implude.officialapp.model.UserModel" />
 
         <variable
             name="items"

@@ -10,7 +10,7 @@
 
         <variable
             name="item"
-            type="com.cclean.implude.model.NoticeItemModel" />
+            type="com.implude.officialapp.model.NoticeItemModel" />
     </data>
 
     <LinearLayout

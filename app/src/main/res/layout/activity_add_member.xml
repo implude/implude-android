@@ -28,7 +28,7 @@
 
         </LinearLayout>
 
-        <com.cclean.implude.customview.CupertinoEditText
+        <com.implude.officialapp.customview.CupertinoEditText
             android:id="@+id/edit_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
             app:hint="제목을 입력하세요..."
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-        <com.cclean.implude.customview.CupertinoEditText
+        <com.implude.officialapp.customview.CupertinoEditText
             android:id="@+id/edit_mail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -48,7 +48,6 @@
                 bind:title="@{@string/logout_title}"
                 bind:content="@{@string/logout_content}"/>
 
-
         </LinearLayout>
 
     </LinearLayout>

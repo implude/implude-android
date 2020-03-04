@@ -38,7 +38,7 @@
 
         </RelativeLayout>
 
-        <com.cclean.implude.customview.CupertinoTabLayout
+        <com.implude.officialapp.customview.CupertinoTabLayout
             android:id="@+id/layout_nav"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

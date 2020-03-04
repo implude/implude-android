@@ -5,11 +5,11 @@
 
     <data>
         <import type="androidx.databinding.ObservableArrayList" />
-        <import type="com.cclean.implude.model.BaseItemModel" />
+        <import type="com.implude.officialapp.model.BaseItemModel" />
 
         <variable
             name="viewModel"
-            type="com.cclean.implude.AnnounceViewModel" />
+            type="com.implude.officialapp.AnnounceViewModel" />
     </data>
 
     <LinearLayout
