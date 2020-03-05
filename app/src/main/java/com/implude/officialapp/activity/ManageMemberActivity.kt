@@ -20,9 +20,9 @@ class ManageMemberActivity : AppCompatActivity() {
     private val itemList: ObservableArrayList<UserModel> = ObservableArrayList<UserModel>()
     private val adapter: ManageMemberRecyclerViewAdapter = ManageMemberRecyclerViewAdapter()
 
-    init {
-//        val testUser = UserModel("https://i.ytimg.com/vi/XplrxSSrja0/maxresdefault.jpg", "장종우", "mcpgclean@gmail.com", false, "")
-//        itemList.add(testUser)
+    companion object {
+        public const val FAB_ADD = 100
+        public const val USER_ADDED = 101
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,27 +31,29 @@ class ManageMemberActivity : AppCompatActivity() {
         binding.recyclerviewMain.adapter = adapter
         binding.items = itemList
 
+        loadUser()
+
         button_back.setOnClickListener {
             finish()
         }
 
         fab_add.setOnClickListener {
-            startActivity(Intent(this, AddMemberActivity::class.java))
+            startActivityForResult(Intent(this, AddMemberActivity::class.java), FAB_ADD)
         }
+    }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(requestCode==FAB_ADD && resultCode==USER_ADDED)
+            loadUser()
+    }
+
+    fun loadUser()
+    {
         db.collection("users").get().addOnSuccessListener { result ->
-                for(user in result)
-                    itemList.add(user.toObject(UserModel::class.java))
+            for(user in result)
+                itemList.add(user.toObject(UserModel::class.java))
         }
-
-//        val query = docRef.whereEqualTo("mail", account!!.email)
-//        query.get().addOnSuccessListener { documents ->
-//            if(documents.isEmpty)
-//            {
-//                CupertinoDialog(this@ManageMemberActivity).show("죄송합니다", "데이터를 불러오는 과정에 문제가 생긴 것 같습니다")
-//            } else {
-//                userData = documents.documents[0].toObject(UserModel::class.java)!!
-//            }
-//        }
     }
 }

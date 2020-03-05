@@ -26,7 +26,7 @@
             <include
                 android:id="@+id/include"
                 layout="@layout/layout_title"
-                app:title="@{@string/text_add_member}" />
+                app:title="@{@string/text_manage_member}" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview_main"

@@ -80,10 +80,15 @@ class LoginActivity : AppCompatActivity(){
                         userData = documents.documents[0].toObject(UserModel::class.java)!!
                         if(userData.uid.isNotEmpty()) {
                             firebaseAuthWithGoogle(account)
+
                             startActivity(Intent(this, MainActivity::class.java))
                             finish()
                         } else {
                             firebaseAuthWithGoogle(account)
+
+                            userData.profile = account.photoUrl.toString()
+                            documents.documents[0].reference.set(userData)
+
                             startActivity(Intent(this, SetProfileActivity::class.java))
                             finish()
                         }
