@@ -22,9 +22,9 @@ import kotlinx.android.synthetic.main.activity_login.*
 
 
 class LoginActivity : AppCompatActivity(){
-    val firebaseAuth = FirebaseAuth.getInstance()
-    val db = FirebaseFirestore.getInstance()
-    lateinit var userData : UserModel
+    private val firebaseAuth = FirebaseAuth.getInstance()
+    private val db = FirebaseFirestore.getInstance()
+    private lateinit var userData : UserModel
 
     companion object {
         private const val RC_SIGN_IN = 123
@@ -55,11 +55,6 @@ class LoginActivity : AppCompatActivity(){
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val user = firebaseAuth.currentUser
-                    if(!userData.uid.isBlank()) {
-                        startActivity(Intent(this, MainActivity::class.java))
-                    } else {
-                        startActivity(Intent(this, SetProfileActivity::class.java))
-                    }
                 } else {
                     CupertinoDialog(this@LoginActivity).show("오류", "로그인 과정에서 오류가 발생했습니다\n동장혹은 부동장에게 문의하세요")
                 }
@@ -83,11 +78,19 @@ class LoginActivity : AppCompatActivity(){
                         CupertinoDialog(this@LoginActivity).show("죄송합니다", "Implude 동아리 부원으로 추가되지 않은 계정입니다")
                     } else {
                         userData = documents.documents[0].toObject(UserModel::class.java)!!
-                        firebaseAuthWithGoogle(account)
+                        if(userData.uid.isNotEmpty()) {
+                            firebaseAuthWithGoogle(account)
+                            startActivity(Intent(this, MainActivity::class.java))
+                            finish()
+                        } else {
+                            firebaseAuthWithGoogle(account)
+                            startActivity(Intent(this, SetProfileActivity::class.java))
+                            finish()
+                        }
                     }
                 }
             } catch (e: ApiException) {
-                CupertinoDialog(this@LoginActivity).show("오류", "로그인 과정에서 오류가 발생했습니다\n동장혹은 부동장에게 문의하세요")
+                CupertinoDialog(this@LoginActivity).show("오류", "로그인 과정에서 오류가 발생했습니다\n해결을 위해 동장혹은 부동장에게 문의하세요")
             }
         }
     }

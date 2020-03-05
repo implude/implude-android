@@ -3,14 +3,14 @@ package com.implude.officialapp.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ObservableArrayList
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.implude.officialapp.R
-import com.implude.officialapp.databinding.ItemApplicationBinding
 import com.implude.officialapp.databinding.ItemManageMemberBinding
-import com.implude.officialapp.databinding.ItemNoticeBinding
 import com.implude.officialapp.model.UserModel
 
 
@@ -23,9 +23,16 @@ class ManageMemberRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHo
             val adapter : ManageMemberRecyclerViewAdapter = recyclerView.adapter as ManageMemberRecyclerViewAdapter;
             adapter.setItems(items);
         }
+
+        @BindingAdapter("app:imageUrl")
+        @JvmStatic
+        fun loadImage(imageView: ImageView, url: String?) {
+            if (!url.isNullOrEmpty())
+                Glide.with(imageView.context).load(url).into(imageView)
+        }
     }
 
-    private var ItemViewModels: ArrayList<UserModel> = ArrayList()
+    private var itemViewModel: ArrayList<UserModel> = ArrayList()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -37,16 +44,16 @@ class ManageMemberRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHo
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val binding : ItemManageMemberBinding = (holder as ManageMemberViewHolder).binding
-        binding.item = ItemViewModels[position] as UserModel
+        binding.item = itemViewModel[position] as UserModel
     }
 
     override fun getItemCount(): Int {
-        return ItemViewModels.size
+        return itemViewModel.size
     }
 
     public fun setItems(items: ArrayList<UserModel>)
     {
-        ItemViewModels = items
+        itemViewModel = items
         notifyDataSetChanged();
     }
 
