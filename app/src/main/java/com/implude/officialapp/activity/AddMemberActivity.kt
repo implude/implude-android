@@ -27,10 +27,13 @@ class AddMemberActivity : AppCompatActivity() {
         }
 
         button_add.setOnClickListener {
-            val user = UserModel("", edit_name.text, edit_mail.text, false, "")
+            //val user = UserModel("", edit_name.text, edit_mail.text, false)
+            //val user = UserModel("", edit_name.text, edit_mail.text, false)
+            val user = mapOf("name" to edit_name.text, "admin" to false)
             button_add.startAnimation();
-            db.collection("users")
-                .add(user)
+            db.collection("emails")
+                .document(edit_mail.text)
+                .set(user)
                 .addOnSuccessListener {
                     button_add.revertAnimation();
                     button_add.background = this.getDrawable(R.drawable.shape_round_accent)

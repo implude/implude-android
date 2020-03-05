@@ -36,7 +36,7 @@ class SplashActivity : AppCompatActivity() {
             }
         }
         else {
-            if (sharedPreferences.getBoolean("first", false)) {
+            if (!sharedPreferences.getBoolean("first", false)) {
                 startActivity(Intent(this, IntroActivity::class.java))
                 finish()
             } else {

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -48,17 +49,21 @@ class LoginActivity : AppCompatActivity(){
         }
     }
 
-    private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
+    private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount, user : UserModel? = null) {
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
 
-        firebaseAuth.signInWithCredential(credential)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    val user = firebaseAuth.currentUser
-                } else {
-                    CupertinoDialog(this@LoginActivity).show("오류", "로그인 과정에서 오류가 발생했습니다\n동장혹은 부동장에게 문의하세요")
-                }
+        //TODO: 이부분 땜빵으로 Complete 되자마자 바로 그냥 추가하게 했는데 예외처리 해줘야함
+        firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
+            if(user != null)
+            {
+                user.mail = acct.email.toString()
+                user.profile = acct.photoUrl.toString()
+
+                db.collection("users")
+                    .document(it.result?.user?.uid!!)
+                    .set(user)
             }
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -70,28 +75,25 @@ class LoginActivity : AppCompatActivity(){
                 // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)
 
-                val docRef = db.collection("users")
-                val query = docRef.whereEqualTo("mail", account!!.email)
-                query.get().addOnSuccessListener { documents ->
-                    if(documents.isEmpty)
+                db.collection("emails").document(account?.email!!).get().addOnSuccessListener { documentSnapshot ->
+                    if(!documentSnapshot.exists())
                     {
                         CupertinoDialog(this@LoginActivity).show("죄송합니다", "Implude 동아리 부원으로 추가되지 않은 계정입니다")
+                        AuthUI.getInstance()
+                            .signOut(this)
                     } else {
-                        userData = documents.documents[0].toObject(UserModel::class.java)!!
-                        if(userData.uid.isNotEmpty()) {
-                            firebaseAuthWithGoogle(account)
+                        userData = documentSnapshot.toObject(UserModel::class.java)!!
 
+                        //TODO: Firebase 쪽 문제로 로그인 실패했을 경우 예외 처리 필요, 어떻게 할지는 나도 모르겠다
+                        if(userData.profile.isNotEmpty()) {
+                            firebaseAuthWithGoogle(account)
                             startActivity(Intent(this, MainActivity::class.java))
-                            finish()
-                        } else {
-                            firebaseAuthWithGoogle(account)
-
-                            userData.profile = account.photoUrl.toString()
-                            documents.documents[0].reference.set(userData)
-
-                            startActivity(Intent(this, SetProfileActivity::class.java))
-                            finish()
                         }
+                        else {
+                            firebaseAuthWithGoogle(account, userData)
+                            startActivity(Intent(this, SetProfileActivity::class.java))
+                        }
+                        finish()
                     }
                 }
             } catch (e: ApiException) {

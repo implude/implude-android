@@ -30,5 +30,10 @@ class SettingActivity : AppCompatActivity() {
         layout_manage_member.setOnClickListener {
             startActivity(Intent(this, ManageMemberActivity::class.java))
         }
+
+        layout_profile.setOnClickListener {
+            startActivity(Intent(this, SetProfileActivity::class.java))
+            finishAffinity()
+        }
     }
 }

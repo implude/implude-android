@@ -4,7 +4,6 @@ class UserModel(
     var profile: String = "",
     var name: String = "",
     var mail: String = "",
-    var admin: Boolean = true,
-    var uid: String = ""
+    var admin: Boolean = true
 ) {
 }
