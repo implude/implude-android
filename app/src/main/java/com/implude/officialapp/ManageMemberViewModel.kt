@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.implude.officialapp.adapter.ItemDeletable
 import com.implude.officialapp.model.UserModel
+import kotlinx.coroutines.tasks.await
 
 class ManageMemberViewModel : ViewModel(), ItemDeletable {
     val memberList: ObservableArrayList<UserModel> = ObservableArrayList()
@@ -38,5 +39,19 @@ class ManageMemberViewModel : ViewModel(), ItemDeletable {
 
     override fun onDeleteItemButtonClick(deleteItemPosition: Int) {
         deleteUserFrom(deleteItemPosition)
+    }
+
+    private suspend fun loadPendingUsers(): ArrayList<UserModel> {
+        val pendingUsers = ArrayList<UserModel>()
+        val memberEmails = memberList.map { it.mail }
+        db.collection("emails").get().await().forEach {
+            val email = it.id
+            if (!memberEmails.contains(email)) {
+                val user = it.toObject(UserModel::class.java)
+                user.mail = email
+                pendingUsers.add(user)
+            }
+        }
+        return pendingUsers
     }
 }
