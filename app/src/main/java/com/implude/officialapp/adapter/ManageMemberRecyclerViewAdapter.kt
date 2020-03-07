@@ -8,14 +8,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ObservableArrayList
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.implude.officialapp.ManageMemberViewModel
 import com.implude.officialapp.R
+import com.implude.officialapp.adapter.ManageMemberRecyclerViewAdapter.ManageMemberViewHolder
 import com.implude.officialapp.databinding.ItemManageMemberBinding
 import com.implude.officialapp.model.UserModel
 
 
-class ManageMemberRecyclerViewAdapter(private val viewModel: ManageMemberViewModel)
-    : RecyclerView.Adapter<ManageMemberRecyclerViewAdapter.ManageMemberViewHolder>() {
+class ManageMemberRecyclerViewAdapter(private val itemDeletable: ItemDeletable)
+    : RecyclerView.Adapter<ManageMemberViewHolder>() {
 
     private var items: ArrayList<UserModel> = ArrayList()
 
@@ -42,11 +42,9 @@ class ManageMemberRecyclerViewAdapter(private val viewModel: ManageMemberViewMod
     inner class ManageMemberViewHolder(private val binding: ItemManageMemberBinding)
         : RecyclerView.ViewHolder(binding.root) {
         fun bind(position: Int) {
-            binding.run {
-                this.positon = positon
-                item = items[position]
-                vm = viewModel
-            }
+            binding.positon = position
+            binding.item = items[position]
+            binding.deletable = itemDeletable
         }
     }
 
@@ -65,4 +63,8 @@ class ManageMemberRecyclerViewAdapter(private val viewModel: ManageMemberViewMod
                 Glide.with(imageView.context).load(url).into(imageView)
         }
     }
+}
+
+interface ItemDeletable {
+    fun onDeleteItemButtonClick(deleteItemPosition: Int)
 }
