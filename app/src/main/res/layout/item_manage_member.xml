@@ -5,7 +5,15 @@
 
     <data>
         <variable
+            name="positon"
+            type="int" />
+
+        <variable
             name="item"
+            type="com.implude.officialapp.model.UserModel" />
+
+        <variable
+            name="deleteItem"
             type="com.implude.officialapp.model.UserModel" />
     </data>
 

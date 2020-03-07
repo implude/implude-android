@@ -62,7 +62,12 @@ class LoginActivity : AppCompatActivity(){
                 db.collection("users")
                     .document(it.result?.user?.uid!!)
                     .set(user)
+
+                startActivity(Intent(this, SetProfileActivity::class.java))
             }
+            startActivity(Intent(this, MainActivity::class.java))
+
+            finish()
         }
     }
 
@@ -85,15 +90,10 @@ class LoginActivity : AppCompatActivity(){
                         userData = documentSnapshot.toObject(UserModel::class.java)!!
 
                         //TODO: Firebase 쪽 문제로 로그인 실패했을 경우 예외 처리 필요, 어떻게 할지는 나도 모르겠다
-                        if(userData.profile.isNotEmpty()) {
+                        if(userData.profile.isNotEmpty())
                             firebaseAuthWithGoogle(account)
-                            startActivity(Intent(this, MainActivity::class.java))
-                        }
-                        else {
+                        else
                             firebaseAuthWithGoogle(account, userData)
-                            startActivity(Intent(this, SetProfileActivity::class.java))
-                        }
-                        finish()
                     }
                 }
             } catch (e: ApiException) {

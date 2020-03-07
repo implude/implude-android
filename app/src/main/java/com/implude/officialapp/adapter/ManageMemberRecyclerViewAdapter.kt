@@ -17,6 +17,13 @@ import com.implude.officialapp.model.UserModel
 class ManageMemberRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
+        @BindingAdapter("app:delButtonListener")
+        @JvmStatic
+        fun bindDelButtonListener(recyclerView: RecyclerView, items: OnDeleteButtonClickListener) {
+            val adapter : ManageMemberRecyclerViewAdapter = recyclerView.adapter as ManageMemberRecyclerViewAdapter;
+            adapter.setDelButtonListener(items);
+        }
+
         @BindingAdapter("app:item")
         @JvmStatic
         fun bindItem(recyclerView: RecyclerView, items: ObservableArrayList<UserModel>) {
@@ -33,6 +40,7 @@ class ManageMemberRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHo
     }
 
     private var itemViewModel: ArrayList<UserModel> = ArrayList()
+    private lateinit var delButtonListener: OnDeleteButtonClickListener
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -45,6 +53,9 @@ class ManageMemberRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHo
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val binding : ItemManageMemberBinding = (holder as ManageMemberViewHolder).binding
         binding.item = itemViewModel[position] as UserModel
+        binding.buttonDelete.setOnClickListener {
+            delButtonListener.onClick(binding.buttonDelete, position)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -57,8 +68,16 @@ class ManageMemberRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHo
         notifyDataSetChanged();
     }
 
+    public fun setDelButtonListener(items: OnDeleteButtonClickListener)
+    {
+        delButtonListener = items
+    }
+
     class ManageMemberViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var binding : ItemManageMemberBinding = DataBindingUtil.bind(itemView)!!
     }
 
+    interface OnDeleteButtonClickListener{
+        fun onClick(v: View?, position: Int)
+    }
 }

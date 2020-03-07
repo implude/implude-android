@@ -33,7 +33,6 @@ class SettingActivity : AppCompatActivity() {
 
         layout_profile.setOnClickListener {
             startActivity(Intent(this, SetProfileActivity::class.java))
-            finishAffinity()
         }
     }
 }

@@ -64,7 +64,6 @@
         tool:src="@drawable/default_profile"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:visibility="invisible"
         android:id="@+id/img_edit_profile"
         android:layout_width="130dp"
         android:layout_height="130dp"
@@ -73,18 +72,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_pic" />
-
-    <Button
-        android:id="@+id/button_next"
-        android:layout_width="170dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="35dp"
-        android:background="@drawable/shape_round_accent"
-        android:text="@string/text_next"
-        android:textColor="@color/colorPrimary"
-        android:theme="@style/ContentText"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

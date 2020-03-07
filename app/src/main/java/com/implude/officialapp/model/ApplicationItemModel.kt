@@ -5,9 +5,9 @@ import com.implude.officialapp.adapter.AnnounceRecyclerViewAdapter.Companion.TYP
 class ApplicationItemModel (
     val title: String,
     val content: String,
-    val image: List<String>,
+    val images: List<String>,
     val date: String,
     val place: String
-) : BaseItemModel(title, content, image, TYPE_APPLICATION) {
+) : BaseItemModel(title, content, images, TYPE_APPLICATION) {
 
 }
