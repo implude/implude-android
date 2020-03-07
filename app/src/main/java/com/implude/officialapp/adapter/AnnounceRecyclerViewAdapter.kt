@@ -29,7 +29,7 @@ class AnnounceRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder
         }
     }
 
-    private var ItemViewModels: ArrayList<BaseItemModel> = ArrayList()
+    private var items: ArrayList<BaseItemModel> = ArrayList()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -48,24 +48,24 @@ class AnnounceRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (getItemViewType(position) == Companion.TYPE_NOTICE) {
             val binding : ItemNoticeBinding = (holder as NoticeViewHolder).binding
-            binding.item = ItemViewModels[position] as NoticeItemModel
+            binding.item = items[position] as NoticeItemModel
         } else {
             val binding : ItemApplicationBinding = (holder as ApplicationViewHolder).binding
-            binding.item = ItemViewModels[position] as ApplicationItemModel
+            binding.item = items[position] as ApplicationItemModel
         }
     }
 
     override fun getItemViewType(position: Int): Int {
-        return ItemViewModels[position].type
+        return items[position].type
     }
 
     override fun getItemCount(): Int {
-        return ItemViewModels.size
+        return items.size
     }
 
     public fun setItems(items: ArrayList<BaseItemModel>)
     {
-        ItemViewModels = items
+        this.items = items
         notifyDataSetChanged();
     }
 

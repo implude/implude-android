@@ -18,6 +18,10 @@ class SplashActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("firstLogin", 0)
         val account = GoogleSignIn.getLastSignedInAccount(this)
 
+        //로그인 되있는 상태에서 가입에서 해지 되었을때 로그인 해제하는 코드
+        //근데 이거때문에 스플래시 때마다 Login Validation 검사하는건 좀 너무 오래걸리는데
+        //원격으로 로그인 해제할 방법이 있으면 좋을 거 같다
+        //firebaseAuth 쪽은 되는거 같은데 Google 쪽이 안되;;
         if (FirebaseAuth.getInstance().currentUser != null) {
             if (account != null) {
                 FirebaseAuth.getInstance().currentUser!!.reauthenticate(GoogleAuthProvider.getCredential(account.idToken, null)
