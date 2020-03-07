@@ -5,12 +5,14 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.lifecycleScope
 import com.implude.officialapp.ManageMemberViewModel
 import com.implude.officialapp.R
 import com.implude.officialapp.adapter.ManageMemberRecyclerViewAdapter
 import com.implude.officialapp.databinding.ActivityManageMemberBinding
 import kotlinx.android.synthetic.main.activity_manage_member.*
 import kotlinx.android.synthetic.main.layout_title.*
+import kotlinx.coroutines.launch
 
 class ManageMemberActivity : AppCompatActivity() {
     private lateinit var viewModel: ManageMemberViewModel
@@ -26,13 +28,15 @@ class ManageMemberActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding : ActivityManageMemberBinding = DataBindingUtil.setContentView<ActivityManageMemberBinding>(this, R.layout.activity_manage_member)
+        val binding: ActivityManageMemberBinding = DataBindingUtil.setContentView<ActivityManageMemberBinding>(this, R.layout.activity_manage_member)
         viewModel = ViewModelProviders.of(this).get(ManageMemberViewModel::class.java)
 
         binding.recyclerviewMain.adapter = ManageMemberRecyclerViewAdapter(viewModel)
         binding.viewModel = viewModel
 
-        viewModel.loadUserFrom("users")
+        lifecycleScope.launch {
+            viewModel.loadUserFrom("users")
+        }
 
         button_back.setOnClickListener {
             finish()
@@ -46,7 +50,9 @@ class ManageMemberActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(requestCode==FAB_ADD && resultCode==USER_ADDED)
-            viewModel.loadUserFrom("users")
+        if (requestCode == FAB_ADD && resultCode == USER_ADDED)
+            lifecycleScope.launch {
+                viewModel.loadUserFrom("users")
+            }
     }
 }

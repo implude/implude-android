@@ -8,7 +8,8 @@ import com.implude.officialapp.model.UserModel
 import kotlinx.coroutines.tasks.await
 
 class ManageMemberViewModel : ViewModel(), ItemDeletable {
-    val memberList: ObservableArrayList<UserModel> = ObservableArrayList()
+    val memberList = ObservableArrayList<UserModel>()
+    private val pendingUsers = ObservableArrayList<UserModel>()
     private val db = FirebaseFirestore.getInstance()
 
     private fun deleteUserFrom(pos: Int) {
@@ -30,19 +31,18 @@ class ManageMemberViewModel : ViewModel(), ItemDeletable {
         memberList.removeAt(pos)
     }
 
-    fun loadUserFrom(path: String) {
-        db.collection(path).get().addOnSuccessListener { result ->
-            for (user in result)
-                memberList.add(user.toObject(UserModel::class.java))
+    suspend fun loadUserFrom(path: String) {
+        db.collection(path).get().await().forEach {
+            memberList.add(it.toObject(UserModel::class.java))
         }
+        loadPendingUsers()
     }
 
     override fun onDeleteItemButtonClick(deleteItemPosition: Int) {
         deleteUserFrom(deleteItemPosition)
     }
 
-    private suspend fun loadPendingUsers(): ArrayList<UserModel> {
-        val pendingUsers = ArrayList<UserModel>()
+    private suspend fun loadPendingUsers() {
         val memberEmails = memberList.map { it.mail }
         db.collection("emails").get().await().forEach {
             val email = it.id
@@ -52,6 +52,5 @@ class ManageMemberViewModel : ViewModel(), ItemDeletable {
                 pendingUsers.add(user)
             }
         }
-        return pendingUsers
     }
 }
