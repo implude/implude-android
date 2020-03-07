@@ -63,6 +63,7 @@ class CupertinoEditText(context: Context, private val attrs: AttributeSet?) : Li
                     layoutParams = params
                     inputType = InputType.TYPE_TEXT_FLAG_IME_MULTI_LINE or InputType.TYPE_TEXT_FLAG_CAP_SENTENCES
                     minLines = 6
+                    maxLines = 10
                     gravity = Gravity.TOP or Gravity.START
                     setHorizontallyScrolling(false)
                     isSingleLine = false

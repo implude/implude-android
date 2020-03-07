@@ -12,7 +12,6 @@ class ManageMemberViewModel : ViewModel() {
 
     private fun deleteUserFrom(pos: Int) {
         val target = memberList[pos]
-        Log.d("testing", target.name)
 
         //users 목록에서 삭제
         //자체 쿼리 돌리는데 괜찮겠지...?
