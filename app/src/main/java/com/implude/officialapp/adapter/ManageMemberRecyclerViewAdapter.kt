@@ -42,11 +42,9 @@ class ManageMemberRecyclerViewAdapter(private val itemDeletable: ItemDeletable)
     inner class ManageMemberViewHolder(private val binding: ItemManageMemberBinding)
         : RecyclerView.ViewHolder(binding.root) {
         fun bind(position: Int) {
-            binding.run {
-                this.positon = positon
-                item = items[position]
-                deletable = itemDeletable
-            }
+            binding.positon = position
+            binding.item = items[position]
+            binding.deletable = itemDeletable
         }
     }
 
