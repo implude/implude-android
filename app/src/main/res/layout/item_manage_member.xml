@@ -14,8 +14,8 @@
             type="com.implude.officialapp.model.UserModel" />
 
         <variable
-            name="vm"
-            type="com.implude.officialapp.ManageMemberViewModel" />
+            name="deletable"
+            type="com.implude.officialapp.adapter.ItemDeletable" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -57,7 +57,7 @@
             android:layout_alignParentEnd="true"
             android:layout_margin="12dp"
             android:contentDescription="@string/text_deletebtn"
-            android:onClick="@{() -> vm.onDeleteButtonClick(positon)}"
+            android:onClick="@{() -> deletable.onDeleteItemButtonClick(positon)}"
             android:src="@drawable/ic_delete"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

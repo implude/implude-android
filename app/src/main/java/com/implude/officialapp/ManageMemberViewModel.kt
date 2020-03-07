@@ -1,18 +1,17 @@
 package com.implude.officialapp
 
-import android.util.Log
 import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
+import com.implude.officialapp.adapter.ItemDeletable
 import com.implude.officialapp.model.UserModel
 
-class ManageMemberViewModel : ViewModel() {
+class ManageMemberViewModel : ViewModel(), ItemDeletable {
     val memberList: ObservableArrayList<UserModel> = ObservableArrayList()
     private val db = FirebaseFirestore.getInstance()
 
     private fun deleteUserFrom(pos: Int) {
         val target = memberList[pos]
-        Log.d("testing", target.name)
 
         //users 목록에서 삭제
         //자체 쿼리 돌리는데 괜찮겠지...?
@@ -37,7 +36,7 @@ class ManageMemberViewModel : ViewModel() {
         }
     }
 
-    fun onDeleteButtonClick(pos: Int) {
-        deleteUserFrom(pos)
+    override fun onDeleteItemButtonClick(deleteItemPosition: Int) {
+        deleteUserFrom(deleteItemPosition)
     }
 }
