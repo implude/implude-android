@@ -10,5 +10,6 @@
     <declare-styleable name="CupertinoEditText">
         <attr name="title" format="string" />
         <attr name="hint" format="string" />
+        <attr name="type" format="string" />
     </declare-styleable>
 </resources>

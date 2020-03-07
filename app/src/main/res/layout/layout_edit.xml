@@ -26,9 +26,11 @@
         android:hint="@string/default_hint"
         android:textColorHint="@color/colorPrimaryDarkLight"
         android:inputType="text"
-        android:importantForAutofill="no" />
+        android:importantForAutofill="no"
+        android:scrollbars="vertical"/>
 
     <View
+        android:id="@+id/view_divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/colorBlack"

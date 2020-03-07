@@ -36,6 +36,7 @@
         <activity android:name="com.implude.officialapp.activity.SetProfileActivity" />
         <activity android:name="com.implude.officialapp.activity.AddMemberActivity" />
         <activity android:name="com.implude.officialapp.activity.ManageMemberActivity" />
+        <activity android:name=".activity.AddAnnounceActivity" />
     </application>
 
 </manifest>

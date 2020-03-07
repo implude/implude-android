@@ -14,6 +14,11 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    companion object {
+        private const val ADD_ANNOUNCE = 100
+        private const val ADD_ANNOUNCE_SUCCESS = 101
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -39,6 +44,16 @@ class MainActivity : AppCompatActivity() {
         // Viewpager, Tablayout Listener 연결
         layout_nav.addOnTabSelectedListener(CupertinoTabLayout.ViewPagerOnTabSelectedListener(viewpager_main))
         viewpager_main.addOnPageChangeListener(layout_nav)
+
+        fab.setOnClickListener {
+            if (viewpager_main.currentItem == 0)
+                startActivityForResult(Intent(this, AddAnnounceActivity::class.java), ADD_ANNOUNCE)
+        }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        //if(requestCode== ADD_ANNOUNCE && resultCode== ADD_ANNOUNCE_SUCCESS)
+    }
 }
