@@ -1,18 +1,13 @@
 package com.implude.officialapp.activity
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.firebase.ui.auth.AuthUI
-import com.firebase.ui.auth.IdpResponse
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
@@ -41,7 +36,7 @@ class LoginActivity : AppCompatActivity(){
                 .requestEmail()
                 .build()
 
-        val mGoogleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
+        val mGoogleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions)
 
         button_login.setOnClickListener {
             val signInIntent = mGoogleSignInClient.signInIntent
@@ -52,10 +47,12 @@ class LoginActivity : AppCompatActivity(){
     private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount, user : UserModel? = null) {
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
 
-        //TODO: 이부분 땜빵으로 Complete 되자마자 바로 그냥 추가하게 했는데 예외처리 해줘야함
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
-            if(user != null)
-            {
+            if (!it.isSuccessful) {
+                showErrorDialog()
+                return@addOnCompleteListener
+            }
+            if(user != null) {
                 user.mail = acct.email.toString()
                 user.profile = acct.photoUrl.toString()
 
@@ -89,7 +86,6 @@ class LoginActivity : AppCompatActivity(){
                     } else {
                         userData = documentSnapshot.toObject(UserModel::class.java)!!
 
-                        //TODO: Firebase 쪽 문제로 로그인 실패했을 경우 예외 처리 필요, 어떻게 할지는 나도 모르겠다
                         if(userData.profile.isNotEmpty())
                             firebaseAuthWithGoogle(account)
                         else
@@ -97,8 +93,12 @@ class LoginActivity : AppCompatActivity(){
                     }
                 }
             } catch (e: ApiException) {
-                CupertinoDialog(this@LoginActivity).show("오류", "로그인 과정에서 오류가 발생했습니다\n해결을 위해 동장혹은 부동장에게 문의하세요")
+                showErrorDialog()
             }
         }
+    }
+
+    private fun showErrorDialog() {
+        CupertinoDialog(this).show("오류", "로그인 과정에서 오류가 발생했습니다\n해결을 위해 동장혹은 부동장에게 문의하세요")
     }
 }
