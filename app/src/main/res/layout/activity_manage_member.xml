@@ -10,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="com.implude.officialapp.ManageMemberViewModel" />
+            type="com.implude.officialapp.viewmodel.ManageMemberViewModel" />
     </data>
 
     <RelativeLayout

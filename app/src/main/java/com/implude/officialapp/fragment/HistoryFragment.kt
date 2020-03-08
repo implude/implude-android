@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.implude.officialapp.HistoryViewModel
+import com.implude.officialapp.viewmodel.HistoryViewModel
 
 import com.implude.officialapp.R
 

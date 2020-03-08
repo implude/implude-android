@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
-import com.implude.officialapp.ManageMemberViewModel
+import com.implude.officialapp.viewmodel.ManageMemberViewModel
 import com.implude.officialapp.R
 import com.implude.officialapp.adapter.ManageMemberRecyclerViewAdapter
 import com.implude.officialapp.databinding.ActivityManageMemberBinding

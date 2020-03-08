@@ -1,4 +1,4 @@
-package com.implude.officialapp
+package com.implude.officialapp.viewmodel
 
 import androidx.lifecycle.ViewModel
 

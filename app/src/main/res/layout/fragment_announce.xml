@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.implude.officialapp.AnnounceViewModel" />
+            type="com.implude.officialapp.viewmodel.AnnounceViewModel" />
     </data>
 
     <LinearLayout

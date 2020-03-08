@@ -7,10 +7,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import com.implude.officialapp.AnnounceViewModel
+import com.implude.officialapp.viewmodel.AnnounceViewModel
 import com.implude.officialapp.R
 import com.implude.officialapp.adapter.AnnounceRecyclerViewAdapter
-import com.implude.officialapp.databinding.ActivityMainBinding.inflate
 import com.implude.officialapp.databinding.FragmentAnnounceBinding
 
 class AnnounceFragment : Fragment() {
