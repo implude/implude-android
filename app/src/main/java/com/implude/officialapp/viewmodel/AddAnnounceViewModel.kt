@@ -12,22 +12,50 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import com.airbnb.paris.R2.id.time
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.implude.officialapp.R
 import com.implude.officialapp.activity.SetProfileActivity
 import com.implude.officialapp.adapter.AddItemClickable
+import com.implude.officialapp.adapter.AnnounceRecyclerViewAdapter.Companion.TYPE_APPLICATION
 import com.implude.officialapp.custom.CupertinoDialog
+import com.implude.officialapp.model.ApplicationItemModel
+import com.implude.officialapp.model.BaseItemModel
+import com.implude.officialapp.model.NoticeItemModel
 import com.implude.officialapp.model.UserModel
 import kotlinx.coroutines.tasks.await
 import java.io.ByteArrayOutputStream
 
 class AddAnnounceViewModel(val app: Application) : AndroidViewModel(app) {
+    private val db = FirebaseFirestore.getInstance()
     public val images: ObservableArrayList<Bitmap> = ObservableArrayList()
 
     fun addImageItem(bitmap: Bitmap)
     {
         images.add(bitmap)
+    }
+
+    suspend fun uploadAnnounce(item: BaseItemModel, type: Int): Boolean
+    {
+        val imageUrls: ArrayList<String> = ArrayList<String>()
+
+        if(type == TYPE_APPLICATION)
+        {
+            db.collection("announce")
+                .document()
+                .set(item as ApplicationItemModel)
+                .await()
+        }
+        else
+        {
+            db.collection("announce")
+                .document()
+                .set(item as NoticeItemModel)
+                .await()
+        }
+
+        return true
     }
 
     //TODO: Promise 활용해서 업로드 좀 깔끔하게 하기?
@@ -52,22 +80,15 @@ class AddAnnounceViewModel(val app: Application) : AndroidViewModel(app) {
         return imageUrls
     }
 
-    private fun uploadImage(ref: StorageReference, bitmap: Bitmap) : String
-    {
+    private suspend fun uploadImage(ref: StorageReference, bitmap: Bitmap): String {
         //Bitmap to Byte
         val baos = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
 
-        //왜 링크받으려면 continueWithTask 해야하는 거지 기본으로 주면 얼마나 좋아...
-        ref.putBytes(baos.toByteArray()).continueWithTask { task ->
+        return ref.putBytes(baos.toByteArray()).continueWithTask { task ->
             if (!task.isSuccessful)
                 task.exception?.let { throw it }
             ref.downloadUrl
-        }.addOnCompleteListener { task ->
-            //결과값
-            task.result.toString()
-        }
-
-        return ""
+        }.await().toString()
     }
 }

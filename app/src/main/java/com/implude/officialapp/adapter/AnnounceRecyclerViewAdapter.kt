@@ -7,6 +7,7 @@ import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ObservableArrayList
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.implude.officialapp.R
 import com.implude.officialapp.databinding.ItemApplicationBinding
 import com.implude.officialapp.databinding.ItemNoticeBinding
@@ -48,10 +49,22 @@ class AnnounceRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (getItemViewType(position) == Companion.TYPE_NOTICE) {
             val binding : ItemNoticeBinding = (holder as NoticeViewHolder).binding
-            binding.item = items[position] as NoticeItemModel
+            val item = items[position] as NoticeItemModel
+            binding.item = item
+
+            if (!item.images?.isEmpty()!!) {
+                binding.image.visibility = View.VISIBLE
+                Glide.with(binding.image.context).load(item.images?.get(0)).into(binding.image)
+            }
         } else {
             val binding : ItemApplicationBinding = (holder as ApplicationViewHolder).binding
-            binding.item = items[position] as ApplicationItemModel
+            val item = items[position] as ApplicationItemModel
+            binding.item = item
+
+            if (!item.images?.isEmpty()!!) {
+                binding.image.visibility = View.VISIBLE
+                Glide.with(binding.image.context).load(item.images?.get(0)).into(binding.image)
+            }
         }
     }
 

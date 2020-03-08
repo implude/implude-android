@@ -26,8 +26,7 @@
             android:layout_marginTop="20dp"
             android:text="@string/text_important_notice"
             android:textColor="@color/black"
-            android:buttonTint="@color/colorAccent"
-            android:checked="true"/>
+            android:buttonTint="@color/colorAccent"/>
 
         <CheckBox
             android:id="@+id/check_add_link"
@@ -36,8 +35,7 @@
             android:layout_marginTop="12dp"
             android:text="@string/text_add_link"
             android:textColor="@color/black"
-            android:buttonTint="@color/colorAccent"
-            android:checked="true"/>
+            android:buttonTint="@color/colorAccent"/>
 
         <CheckBox
             android:id="@+id/check_able_comment"
@@ -46,11 +44,10 @@
             android:layout_marginTop="12dp"
             android:text="@string/text_able_comment"
             android:textColor="@color/black"
-            android:buttonTint="@color/colorAccent"
-            android:checked="true"/>
+            android:buttonTint="@color/colorAccent"/>
 
         <com.implude.officialapp.custom.CupertinoEditText
-            android:id="@+id/edit_date"
+            android:id="@+id/edit_link"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"

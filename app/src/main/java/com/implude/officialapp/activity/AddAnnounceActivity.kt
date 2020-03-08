@@ -11,10 +11,18 @@ import androidx.lifecycle.lifecycleScope
 import com.implude.officialapp.R
 import com.implude.officialapp.adapter.AddImageRecyclerViewAdapter
 import com.implude.officialapp.adapter.AddItemClickable
+import com.implude.officialapp.adapter.AnnounceRecyclerViewAdapter.Companion.TYPE_APPLICATION
+import com.implude.officialapp.adapter.AnnounceRecyclerViewAdapter.Companion.TYPE_NOTICE
 import com.implude.officialapp.custom.CupertinoDialog
 import com.implude.officialapp.databinding.ActivityAddAnnounceBinding
+import com.implude.officialapp.model.ApplicationItemModel
+import com.implude.officialapp.model.NoticeItemModel
 import com.implude.officialapp.viewmodel.AddAnnounceViewModel
 import kotlinx.android.synthetic.main.activity_add_announce.*
+import kotlinx.android.synthetic.main.activity_add_announce.button_add
+import kotlinx.android.synthetic.main.activity_add_member.*
+import kotlinx.android.synthetic.main.layout_add_application.*
+import kotlinx.android.synthetic.main.layout_add_notice.*
 import kotlinx.android.synthetic.main.layout_title.view.*
 import kotlinx.coroutines.launch
 
@@ -41,6 +49,15 @@ class AddAnnounceActivity : AppCompatActivity() {
 
         recyclerview_image.adapter = adapter
 
+        check_add_link.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(isChecked) {
+                edit_link.visibility = View.VISIBLE
+            } else {
+                edit_link.text = ""
+                edit_link.visibility = View.GONE
+            }
+        }
+
         radioType.setOnCheckedChangeListener { group, checkedId ->
             if (checkedId == R.id.radioApplication) {
                 layout_application.visibility = View.VISIBLE
@@ -55,7 +72,35 @@ class AddAnnounceActivity : AppCompatActivity() {
         layout_nav.button_back.setOnClickListener { finish() }
 
         button_add.setOnClickListener {
-            lifecycleScope.launch { viewModel.uploadImages() }
+            button_add.startAnimation()
+
+            lifecycleScope.launch {
+                val urls: ArrayList<String>? = viewModel.uploadImages()
+
+                if(radioType.checkedRadioButtonId == R.id.radioApplication) {
+                    val post = ApplicationItemModel(
+                        edit_title.text,
+                        edit_content.text,
+                        urls,
+                        edit_date.text,
+                        edit_place.text)
+
+                    viewModel.uploadAnnounce(post, TYPE_APPLICATION)
+                } else {
+                    val post = NoticeItemModel(
+                        edit_title.text,
+                        edit_content.text,
+                        urls,
+                        edit_link.text,
+                        check_important.isChecked,
+                        check_able_comment.isChecked)
+                    viewModel.uploadAnnounce(post, TYPE_NOTICE)
+                }
+
+                CupertinoDialog(this@AddAnnounceActivity).show("성공!", "성공적으로 공지/신청이 추가 되었습니다")
+                button_add.revertAnimation()
+                button_add.background = this@AddAnnounceActivity.getDrawable(R.drawable.shape_round_accent)
+            }
         }
     }
 
