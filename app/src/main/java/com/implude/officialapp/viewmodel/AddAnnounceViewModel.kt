@@ -52,24 +52,22 @@ class AddAnnounceViewModel(val app: Application) : AndroidViewModel(app) {
         return imageUrls
     }
 
-    private suspend fun uploadImage(ref: StorageReference, bitmap: Bitmap) : String
+    private fun uploadImage(ref: StorageReference, bitmap: Bitmap) : String
     {
-        var imageUrl : String = ""
-
         //Bitmap to Byte
         val baos = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
 
         //왜 링크받으려면 continueWithTask 해야하는 거지 기본으로 주면 얼마나 좋아...
-        ref.putBytes(baos.toByteArray()).await().task.continueWithTask { task ->
+        ref.putBytes(baos.toByteArray()).continueWithTask { task ->
             if (!task.isSuccessful)
                 task.exception?.let { throw it }
             ref.downloadUrl
         }.addOnCompleteListener { task ->
-            if (task.isSuccessful)
-                imageUrl = task.result.toString()
+            //결과값
+            task.result.toString()
         }
 
-        return imageUrl
+        return ""
     }
 }
